@@ -48,7 +48,7 @@ Run the main script from the command line, specifying the necessary arguments:
 ```sh
 cd src 
 
-python -m llm_data_generator.main input_file.txt output_file.jsonl --spliter regix --formula guanaco --file_format jsonl --model cohere --model_specific cohere-v1 --chunk_size 1000 --overlap 200
+python -m main.py input_file.txt output_file.jsonl --spliter regix --formula guanaco --file_format jsonl --model cohere --model_specific cohere-v1 --chunk_size 1000 --overlap 200
 ```
 
 ### Arguments
