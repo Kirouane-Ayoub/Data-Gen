@@ -31,5 +31,28 @@ def regix_spliter(text: str, chunk_size: int, overlap: int):
         return chunks
 
 
-def other_spliter(text: str, chunk_size: int, overlap: int):
-    pass
+def word_based_splitter(text: str, chunk_size: int, overlap: int):
+    words = text.split()
+    chunks = []
+    current_chunk = []
+
+    for word in words:
+        if len(" ".join(current_chunk + [word])) <= chunk_size:
+            current_chunk.append(word)
+        else:
+            chunks.append(" ".join(current_chunk))
+            current_chunk = [word]
+
+    if current_chunk:
+        chunks.append(" ".join(current_chunk))
+
+    # Add overlap to chunks
+    if overlap > 0:
+        overlapping_chunks = []
+        for i in range(len(chunks)):
+            start = max(0, i * chunk_size - i * overlap)
+            end = start + chunk_size
+            overlapping_chunks.append(" ".join(words[start:end]).strip())
+        return overlapping_chunks
+    else:
+        return chunks

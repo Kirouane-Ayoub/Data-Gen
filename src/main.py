@@ -4,7 +4,7 @@ import random
 
 from models import generarte_with_groq, generate_with_cohere, generate_with_gemini
 from save import save_to_file
-from spliter import other_spliter, regix_spliter
+from spliter import regix_spliter, word_based_splitter
 from tqdm import tqdm
 
 model_mapping = {
@@ -12,7 +12,7 @@ model_mapping = {
     "gemini": generate_with_gemini,
     "groq": generarte_with_groq,
 }
-spliter_mapping = {"regix": regix_spliter, "other": other_spliter}
+spliter_mapping = {"regix": regix_spliter, "word_based_splitter": word_based_splitter}
 
 
 def data_generator(
@@ -84,7 +84,7 @@ if __name__ == "__main__":
         "--spliter",
         type=str,
         default="regix",
-        choices=["regix", "other"],
+        choices=["regix", "word_based_splitter"],
         help="Spliter function to use for splitting the text into chunks.",
     )
     parser.add_argument(
@@ -113,12 +113,12 @@ if __name__ == "__main__":
         help="Specific version or configuration for the model.",
     )
     parser.add_argument(
-        "--chunk_size", type=int, default=1000, help="Number of tokens per chunk."
+        "--chunk_size", type=int, default=100, help="Number of tokens per chunk."
     )
     parser.add_argument(
         "--overlap",
         type=int,
-        default=200,
+        default=20,
         help="Number of tokens to overlap between chunks.",
     )
 
