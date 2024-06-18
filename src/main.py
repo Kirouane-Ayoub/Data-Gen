@@ -2,12 +2,16 @@ import argparse
 import os
 import random
 
-from models import generate_with_cohere, generate_with_gemini
+from models import generarte_with_groq, generate_with_cohere, generate_with_gemini
 from save import save_to_file
 from spliter import other_spliter, regix_spliter
 from tqdm import tqdm
 
-model_mapping = {"cohere": generate_with_cohere, "gemini": generate_with_gemini}
+model_mapping = {
+    "cohere": generate_with_cohere,
+    "gemini": generate_with_gemini,
+    "groq": generarte_with_groq,
+}
 spliter_mapping = {"regix": regix_spliter, "other": other_spliter}
 
 
@@ -99,8 +103,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         type=str,
-        default="cohere",
-        choices=["cohere", "gemini"],
+        default="groq",
+        choices=["cohere", "gemini", "groq"],
         help="Model to use for generating Q&A pairs.",
     )
     parser.add_argument(
