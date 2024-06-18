@@ -27,8 +27,8 @@ LLM Data Generator is a Python project designed to generate datasets for trainin
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/llm_data_generator.git
-    cd llm_data_generator
+    git clone https://github.com/Kirouane-Ayoub/Data-Gen.git
+    cd Data-Gen
     ```
 
 2. Create and activate a virtual environment:
@@ -46,6 +46,7 @@ LLM Data Generator is a Python project designed to generate datasets for trainin
     ```ini
     CO_API_KEY=your_cohere_api_key
     GEMINI_API_KEY=your_gemini_api_key
+    GROQ_API_KEY=....
     ```
 
 ## Usage
