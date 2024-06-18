@@ -56,3 +56,10 @@ def word_based_splitter(text: str, chunk_size: int, overlap: int):
         return overlapping_chunks
     else:
         return chunks
+
+
+def character_based_splitter(text: str, chunk_size: int, overlap: int):
+    chunks = []
+    for i in range(0, len(text), chunk_size - overlap):
+        chunks.append(text[i : i + chunk_size].strip())
+    return chunks
