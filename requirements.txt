@@ -3,3 +3,4 @@ tqdm
 cohere 
 groq
 python-dotenv
+nltk

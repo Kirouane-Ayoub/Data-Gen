@@ -8,6 +8,7 @@ from spliter import (
     character_based_splitter,
     paragraph_based_splitter,
     regix_spliter,
+    sentence_based_splitter,
     word_based_splitter,
 )
 from tqdm import tqdm
@@ -22,6 +23,7 @@ spliter_mapping = {
     "word_based_splitter": word_based_splitter,
     "character_based_splitter": character_based_splitter,
     "paragraph_based_splitter": paragraph_based_splitter,
+    "sentence_based_splitter": sentence_based_splitter,
 }
 
 
@@ -99,6 +101,7 @@ if __name__ == "__main__":
             "word_based_splitter",
             "character_based_splitter",
             "paragraph_based_splitter",
+            "sentence_based_splitter",
         ],
         help="Spliter function to use for splitting the text into chunks.",
     )

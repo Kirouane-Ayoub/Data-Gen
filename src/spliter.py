@@ -90,3 +90,35 @@ def paragraph_based_splitter(text: str, chunk_size: int, overlap: int):
         return overlapping_chunks
     else:
         return chunks
+
+
+def sentence_based_splitter(text: str, chunk_size: int, overlap: int):
+    import nltk
+
+    nltk.download("punkt")
+    from nltk.tokenize import sent_tokenize
+
+    sentences = sent_tokenize(text)
+    chunks = []
+    current_chunk = ""
+
+    for sentence in sentences:
+        if len(current_chunk) + len(sentence) + 1 <= chunk_size:
+            current_chunk += " " + sentence
+        else:
+            chunks.append(current_chunk.strip())
+            current_chunk = sentence
+
+    if current_chunk:
+        chunks.append(current_chunk.strip())
+
+    # Add overlap to chunks
+    if overlap > 0:
+        overlapping_chunks = []
+        for i in range(len(chunks)):
+            start = max(0, i * chunk_size - i * overlap)
+            end = start + chunk_size
+            overlapping_chunks.append(text[start:end].strip())
+        return overlapping_chunks
+    else:
+        return chunks
