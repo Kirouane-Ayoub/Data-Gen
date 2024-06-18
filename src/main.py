@@ -4,7 +4,12 @@ import random
 
 from models import generarte_with_groq, generate_with_cohere, generate_with_gemini
 from save import save_to_file
-from spliter import character_based_splitter, regix_spliter, word_based_splitter
+from spliter import (
+    character_based_splitter,
+    paragraph_based_splitter,
+    regix_spliter,
+    word_based_splitter,
+)
 from tqdm import tqdm
 
 model_mapping = {
@@ -16,6 +21,7 @@ spliter_mapping = {
     "regix": regix_spliter,
     "word_based_splitter": word_based_splitter,
     "character_based_splitter": character_based_splitter,
+    "paragraph_based_splitter": paragraph_based_splitter,
 }
 
 
@@ -88,7 +94,12 @@ if __name__ == "__main__":
         "--spliter",
         type=str,
         default="regix",
-        choices=["regix", "word_based_splitter", "character_based_splitter"],
+        choices=[
+            "regix",
+            "word_based_splitter",
+            "character_based_splitter",
+            "paragraph_based_splitter",
+        ],
         help="Spliter function to use for splitting the text into chunks.",
     )
     parser.add_argument(

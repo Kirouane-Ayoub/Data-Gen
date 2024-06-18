@@ -63,3 +63,30 @@ def character_based_splitter(text: str, chunk_size: int, overlap: int):
     for i in range(0, len(text), chunk_size - overlap):
         chunks.append(text[i : i + chunk_size].strip())
     return chunks
+
+
+def paragraph_based_splitter(text: str, chunk_size: int, overlap: int):
+    paragraphs = text.split("\n")
+    chunks = []
+    current_chunk = ""
+
+    for paragraph in paragraphs:
+        if len(current_chunk) + len(paragraph) + 1 <= chunk_size:
+            current_chunk += "\n" + paragraph
+        else:
+            chunks.append(current_chunk.strip())
+            current_chunk = paragraph
+
+    if current_chunk:
+        chunks.append(current_chunk.strip())
+
+    # Add overlap to chunks
+    if overlap > 0:
+        overlapping_chunks = []
+        for i in range(len(chunks)):
+            start = max(0, i * chunk_size - i * overlap)
+            end = start + chunk_size
+            overlapping_chunks.append(text[start:end].strip())
+        return overlapping_chunks
+    else:
+        return chunks
