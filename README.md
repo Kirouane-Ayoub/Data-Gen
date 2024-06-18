@@ -1,5 +1,14 @@
 # LLM Data Generator
+```
 
+██████   █████  ████████  █████         ██████  ███████ ███    ██ 
+██   ██ ██   ██    ██    ██   ██       ██       ██      ████   ██ 
+██   ██ ███████    ██    ███████ █████ ██   ███ █████   ██ ██  ██ 
+██   ██ ██   ██    ██    ██   ██       ██    ██ ██      ██  ██ ██ 
+██████  ██   ██    ██    ██   ██        ██████  ███████ ██   ████ 
+
+                            LLM Data Generator
+```
 LLM Data Generator is a Python project designed to generate datasets for training language models (LLMs) using existing LLMs. The project supports multiple LLM providers and allows for flexible configuration of text splitting, model generation, and data saving formats.
 
 ## Features
