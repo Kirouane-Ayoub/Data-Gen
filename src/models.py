@@ -5,7 +5,7 @@ from groq import Groq
 
 
 def generate_with_cohere(text_chunk, temperature, model_name):
-    model_name = model_name or settings.DEFAULT_GROQ
+    model_name = model_name or settings.DEFAULT_COHERE
     co = cohere.Client(settings.CO_API_KEY)
     response = co.chat(
         message=f"Generate a question and answer based on: {text_chunk}",
@@ -17,7 +17,7 @@ def generate_with_cohere(text_chunk, temperature, model_name):
 
 
 def generate_with_gemini(text_chunk, temperature, model_name):
-    model_name = model_name or settings.DEFAULT_GROQ
+    model_name = model_name or settings.DEFAULT_GEMINI
     genai.configure(api_key=settings.GOOGLE_API_KEY)
     generation_config = {"": temperature}
     gen_model = genai.GenerativeModel(model_name, generation_config=generation_config)
