@@ -4,3 +4,4 @@ cohere
 groq
 python-dotenv
 nltk
+openai
