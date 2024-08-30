@@ -87,6 +87,5 @@ options:
 
 ```sh
 cd src 
-python main.py input_file.txt output_file.jsonl --spliter regex --formula alpaca --file_format jsonl --model ollama --model_specific llama3.1 --chunk_size 500 --overlap 100
+python main.py input_file.txt output_file.jsonl --spliter regex --chunk_size 500 --overlap 100 --formula alpaca --file_format jsonl --model ollama --model_specific llama3.1 
 ```
-
