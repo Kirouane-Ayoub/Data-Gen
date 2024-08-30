@@ -45,7 +45,7 @@ LLM Data Generator is a Python project designed to generate datasets for trainin
 4. Create a `.env` file in the root directory and add your API keys:
     ```ini
     CO_API_KEY=your_cohere_api_key
-    GEMINI_API_KEY=your_gemini_api_key
+    GOOGLE_API_KEY=your_gemini_api_key
     GROQ_API_KEY=....
     ```
 
@@ -58,7 +58,7 @@ Run the main script from the command line, specifying the necessary arguments:
 ```sh
 cd src 
 
-python main.py input_file.txt output_file.jsonl --spliter regix --formula guanaco --file_format jsonl --model cohere --model_specific command-r-plus --chunk_size 1000 --overlap 200
+python main.py input_file.txt output_file.jsonl --spliter regex --formula guanaco --file_format jsonl --model cohere --model_specific command-r-plus --chunk_size 1000 --overlap 200
 ```
 
 ### Arguments
