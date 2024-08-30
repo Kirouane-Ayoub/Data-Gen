@@ -1,0 +1,32 @@
+Mixture-of-Agents Enhances Large Language Model
+
+Recent advances in large language models (LLMs) demonstrate substantial capabilities in natural language understanding and generation tasks. With the growing
+number of LLMs, how to harness the collective expertise of multiple LLMs is an
+exciting open direction. Toward this goal, we propose a new approach that leverages the collective strengths of multiple LLMs through a Mixture-of-Agents (MoA)
+methodology. In our approach, we construct a layered MoA architecture wherein
+each layer comprises multiple LLM agents. Each agent takes all the outputs from
+agents in the previous layer as auxiliary information in generating its response.
+MoA models achieves state-of-art performance on AlpacaEval 2.0, MT-Bench and
+FLASK, surpassing GPT-4 Omni. For example, our MoA using only open-source
+LLMs is the leader of AlpacaEval 2.0 by a substantial gap, achieving a score of
+65.1% compared to 57.5% by GPT-4 Omni.1
+
+1/  Introduction : 
+
+Large language models (LLMs) (Zhang et al., 2022a; Chowdhery et al., 2022; Touvron et al., 2023a;
+Team et al., 2023; Brown et al., 2020; OpenAI, 2023) have significantly advanced the field of natural
+language understanding and generation in recent years. These models are pretrained on vast amounts
+of data and subsequently aligned with human preferences to generate helpful and coherent outputs
+(Ouyang et al., 2022). However, despite the plethora of LLMs and their impressive achievements,
+they still face inherent constraints on model size and training data. Further scaling up these models is
+exceptionally costly, often requiring extensive retraining on several trillion tokens.
+At the same time, different LLMs possess unique strengths and specialize in various tasks aspects.
+For instance, some models excel at complex instruction following (Xu et al., 2023a) while others may
+be better suited for code generation (Roziere et al., 2023; Guo et al., 2024). This diversity in skill sets
+among different LLMs presents an intriguing question: Can we harness the collective expertise of
+multiple LLMs to create a more capable and robust model?
+Our answer to this question is Yes. We identify an inherent phenomenon we term the collaborativeness
+of LLMs — wherein an LLM tends to generate better responses when presented with outputs
+from other models, even if these other models are less capable by itself. Figure 1 showcases
+the LC win rate on the AlpacaEval 2.0 benchmark (Dubois et al., 2024) for 6 popular LLMs.
+1Our code can be found in: https://github.com/togethercomputer/moa.
