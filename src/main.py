@@ -2,12 +2,17 @@ import argparse
 import os
 import random
 
-from models import generarte_with_groq, generate_with_cohere, generate_with_gemini
+from models import (
+    generarte_with_groq,
+    generarte_with_ollama,
+    generate_with_cohere,
+    generate_with_gemini,
+)
 from save import save_to_file
 from spliter import (
     character_based_splitter,
     paragraph_based_splitter,
-    regix_spliter,
+    regex_splitter,
     sentence_based_splitter,
     word_based_splitter,
 )
@@ -17,9 +22,10 @@ model_mapping = {
     "cohere": generate_with_cohere,
     "gemini": generate_with_gemini,
     "groq": generarte_with_groq,
+    "ollama": generarte_with_ollama,
 }
 spliter_mapping = {
-    "regix": regix_spliter,
+    "regex": regex_splitter,
     "word_based_splitter": word_based_splitter,
     "character_based_splitter": character_based_splitter,
     "paragraph_based_splitter": paragraph_based_splitter,
@@ -97,7 +103,7 @@ if __name__ == "__main__":
         type=str,
         default="regix",
         choices=[
-            "regix",
+            "regex",
             "word_based_splitter",
             "character_based_splitter",
             "paragraph_based_splitter",
@@ -123,7 +129,7 @@ if __name__ == "__main__":
         "--model",
         type=str,
         default="groq",
-        choices=["cohere", "gemini", "groq"],
+        choices=["cohere", "gemini", "groq", "ollama"],
         help="Model to use for generating Q&A pairs.",
     )
     parser.add_argument(
