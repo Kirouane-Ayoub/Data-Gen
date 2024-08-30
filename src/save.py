@@ -20,8 +20,11 @@ def save_to_file(
     qa_pairs, output_file: str, formula: str, file_format: str, context=None
 ):
     # Determine if 'Context' field should be included
-    context_field = "Context" if context else None
-
+    context_field = (
+        "Context"
+        if context
+        else "Below is an instruction that describes a task. Write a response that appropriately completes the request.Below is an instruction that describes a task. Write a response that appropriately completes the request."
+    )
     # Save data in JSONL format
     if file_format == "jsonl":
         with open(output_file, mode="w", encoding="utf-8") as file:
